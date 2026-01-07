@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ההזמנה התקבלה בהצלחה | רבקה הולצברג</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-color: #1B4D3E;
+            --accent-color: #D4AF37;
+            --bg-color: #fdfbf7;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* פס עיטור עליון */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .success-icon {
+            color: var(--primary-color);
+            margin-bottom: 24px;
+            display: inline-block;
+            background: rgba(27, 77, 62, 0.05);
+            padding: 20px;
+            border-radius: 50%;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 2.2rem;
+            font-weight: 900;
+        }
+
+        .sub-text {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* קופסת ההצעה - Upsell */
+        .upsell-box {
+            background: #fffdf5;
+            border: 2px dashed var(--accent-color);
+            padding: 35px 25px;
+            border-radius: 20px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .offer-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .offer-description {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        /* ויזואליזציה של המחיר */
+        .math-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 25px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .crossed {
+            text-decoration: line-through;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .operator {
+            color: var(--accent-color);
+        }
+
+        .final-price {
+            color: #d94e4e;
+            font-size: 1.8rem;
+            font-weight: 900;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            text-align: right;
+            display: inline-block;
+        }
+
+        .benefits-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .benefits-list i {
+            color: var(--primary-color);
+        }
+
+        /* כפתורים */
+        .btn-upgrade {
+            display: block;
+            width: 100%;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-upgrade:hover {
+            transform: translateY(-3px);
+            background: #c5a028;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-skip {
+            display: inline-block;
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .btn-skip:hover {
+            color: #555;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                padding: 30px 20px;
+            }
+            h1 { font-size: 1.8rem; }
+            .math-visual { font-size: 1.1rem; flex-wrap: wrap; }
+            .final-price { font-size: 1.5rem; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- אייקון הצלחה -->
+        <div class="success-icon">
+            <i data-lucide="check-circle-2" size="64"></i>
+        </div>
+
+        <h1>ההרשמה הושלמה!</h1>
+        <p class="sub-text">אישור ההזמנה והקישור הישיר נשלחו אליך למייל ברגעים אלו.</p>
+
+        <!-- תיבת שדרוג -->
+        <div class="upsell-box">
+            <div class="offer-badge">הטבה לזמן מוגבל</div>
+            <div class="offer-title">רגע, יש לנו הצעה בשבילך...</div>
+            
+            <p class="offer-description">
+                במקום לרכוש כל הדרכה בנפרד, אנחנו מזמינים אותך להצטרף ל<b>מועדון השנתי</b>. 
+                כבונוס מיוחד, אנחנו <b>מקזזים לך</b> את התשלום שביצעת עכשיו ממחיר המנוי!
+            </p>
+
+            <ul class="benefits-list">
+                <li><i data-lucide="book-open" size="18"></i> ספר פיזי ייחודי עד הבית</li>
+                <li><i data-lucide="play-circle" size="18"></i> גישה מלאה לכל ספריית ה-VOD</li>
+                <li><i data-lucide="calendar" size="18"></i> ליווי ותכנים חדשים לאורך כל השנה</li>
+            </ul>
+            
+            <div class="math-visual">
+                <span class="crossed">496 ₪</span>
+                <span class="operator"><i data-lucide="minus" size="20"></i></span>
+                <span>37 ₪</span>
+                <span class="operator"><i data-lucide="equal" size="20"></i></span>
+                <span class="final-price">רק 459 ₪ לכל השנה!</span>
+            </div>
+            
+            <a href="PAYMENT_LINK_459" class="btn-upgrade">אני רוצה להשתדרג ולקבל את הספר</a>
+            
+            <a href="homepage.html" class="btn-skip">תודה, אסתפק בהדרכה שרכשתי כרגע</a>
+        </div>
+    </div>
+
+    <script>
+        // אתחול האייקונים של Lucide
+        lucide.createIcons();
+    </script>
+</body>
+</html>
